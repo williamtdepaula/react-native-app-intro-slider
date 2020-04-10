@@ -239,7 +239,10 @@ export default class AppIntroSlider<ItemT> extends React.Component<
   };
 
   _onLayout = ({nativeEvent}: LayoutChangeEvent) => {
-    const {width, height} = nativeEvent.layout;
+    const {width: _widthDevice, height} = nativeEvent.layout;
+    
+    let width = this.props.width ? this.props.width : _widthDevice
+    
     if (width !== this.state.width || height !== this.state.height) {
       // Set new width to update rendering of pages
       this.setState({width, height});
